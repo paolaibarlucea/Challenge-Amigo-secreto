@@ -1,162 +1,83 @@
 :root {
-    --color-primary: #4B69FD;
-    --color-secondary: #FFF9EB;
-    --color-tertiary: #C4C4C4;
-    --color-button: #fe652b;
-    --color-button-hover: #e55720;
-    --color-text: #444444;
-    --color-white: #FFFFFF;
+  --bg: #0f172a;
+  --card: #111827;
+  --muted: #94a3b8;
+  --text: #e5e7eb;
+  --accent: #22d3ee;
+  --ok: #22c55e;
+  --warn: #fbbf24;
 }
 
-/* Estilos generales */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 body {
-    height: 100vh;
-    background-color: var(--color-primary);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, 'Apple Color Emoji', 'Segoe UI Emoji';
+  background: radial-gradient(1200px 800px at 20% 0%, #0b1225, var(--bg));
+  color: var(--text);
 }
 
-.main-content {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    width: 100%;
+.container { max-width: 720px; margin: 6vh auto; padding: 24px; }
+.card {
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+  border: 1px solid rgba(148,163,184,0.15);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+  backdrop-filter: blur(6px);
 }
+h1 { margin: 0 0 12px; font-size: clamp(24px, 3vw, 32px); letter-spacing: .2px; }
+.subtitle { margin: 0 0 20px; color: var(--muted); }
 
-/* Banner */
-.header-banner {
-    flex: 40%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 40px 0 0;
+.row { display: flex; gap: 12px; align-items: center; }
+input[type='text'] {
+  flex: 1; padding: 12px 14px; border-radius: 12px;
+  border: 1px solid rgba(148,163,184,0.25);
+  background: #0b1020; color: var(--text); outline: none;
 }
+input[type='text']:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(34,211,238,0.15); }
 
-/* Sección de entrada */
-.input-section {
-    flex: 60%;
-    background-color: var(--color-secondary);
-    border: 1px solid #000;
-    border-radius: 64px 64px 0 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    width: 100%;
-}
-
-/* Títulos */
-.main-title {
-    font-size: 48px;
-    font-family: "Merriweather", serif;
-    font-weight: 900;
-    font-style: italic;
-    color: var(--color-white);
-}
-
-.section-title {
-    font-family: "Inter", serif;
-    font-size: 36px;
-    font-weight: 700;
-    color: var(--color-primary);
-    margin: 10px 0;
-    text-align: center;
-}
-
-/* Contenedores de entrada y botón */
-.input-wrapper {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    max-width: 600px;
-    margin-top: 20px;
-}
-
-.input-name {
-    width: 100%;
-    padding: 10px;
-    border: 2px solid #000;
-    border-radius: 25px 0 0 25px;
-    font-size: 16px;
-}
-
-.button-container {
-    width: 300px;
-    justify-content: center;
-}
-
-/* Estilos de entrada de texto */
-.input-title {
-    flex: 1;
-    padding: 10px 15px;
-    font-size: 16px;
-    border: 2px solid #333;
-    border-right: none;
-    border-radius: 25px 0 0 25px;
-    font-family: "Merriweather", serif;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
-
-/* Estilos de botón */
 button {
-    padding: 15px 30px;
-    font-family: "Inter", sans-serif;
-    font-size: 16px;
-    border: 2px solid #000;
-    border-radius: 25px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    cursor: pointer;
+  cursor: pointer;
+  border: 1px solid rgba(148,163,184,0.25);
+  background: #0b1020; color: var(--text);
+  padding: 12px 16px; border-radius: 12px;
+  transition: transform .05s ease, box-shadow .2s ease, border-color .2s ease;
+}
+button:hover { border-color: var(--accent); box-shadow: 0 6px 20px rgba(34,211,238,0.12); }
+button:active { transform: translateY(1px); }
+.btn-primary { background: linear-gradient(180deg, #0ea5b9, #0891b2); border-color: #06b6d4; }
+.btn-primary:hover { box-shadow: 0 10px 22px rgba(6,182,212,0.25); }
+.btn-secondary { background: linear-gradient(180deg, #16a34a, #15803d); border-color: #16a34a; }
+
+.hidden { display: none; }
+
+.actions { display: flex; gap: 12px; margin-top: 14px; flex-wrap: wrap; }
+.lists { display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 18px; }
+ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+li { padding: 10px 12px; border: 1px dashed rgba(148,163,184,0.25); border-radius: 10px; background: rgba(17,24,39,0.5); }
+
+.li-sorteado { opacity: .75; border-style: solid; }
+.amigo-item { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 10px; }
+.amigo-item input[type='checkbox'] { width: 18px; height: 18px; }
+.amigo-item .tag { color: var(--muted); }
+
+.result {
+  margin-top: 16px; font-size: clamp(16px, 2.4vw, 20px);
+  padding: 12px 14px; border-radius: 12px;
+  background: rgba(34,211,238,0.08); border: 1px solid rgba(34,211,238,0.25);
+}
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0,0,0,0); border: 0;
 }
 
-.button-add {
-    background-color: var(--color-tertiary);
-    color: var(--color-text);
-    border-radius: 0 25px 25px 0;
+
+/* Imagen principal del banner */
+.header-banner img {
+  display: block;
+  margin: 1rem auto;
+  max-width: 240px; /* controla el ancho máximo */
+  height: auto;
 }
 
-.button-add:hover {
-    background-color: #a1a1a1;
-}
-
-/* Listas */
-ul {
-    list-style-type: none;
-    color: var(--color-text);
-    font-family: "Inter", sans-serif;
-    font-size: 18px;
-    margin: 20px 0;
-}
-
-.result-list {
-    margin-top: 15px;
-    color: #05DF05;
-    font-size: 22px;
-    font-weight: bold;
-    text-align: center;
-}
-
-/* Botón de sortear título */
-.button-draw {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    padding: 10px 40px;
-    color: var(--color-white);
-    background-color: var(--color-button);
-    font-size: 16px;
-}
-
-.button-draw img {
-    margin-right: 40px;
-}
-
-.button-draw:hover {
-    background-color: var(--color-button-hover);
-}
